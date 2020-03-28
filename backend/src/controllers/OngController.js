@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const generateUniqueId = require('../utils/generateUniqueId');
 
 const connection = require('../database/connection');
 
@@ -12,7 +12,7 @@ module.exports = {
     async create(request, response) {
         const {name, email, whatsapp, city, state} = request.body;
 
-        const id = crypto.randomBytes(4).toString('HEX');
+        const id = generateUniqueId();
 
         /*
             Before inserting a new ONG, must have a check if the ID is unique.  
